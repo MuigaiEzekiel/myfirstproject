@@ -1,0 +1,58 @@
+@media only screen and (min-width: 375px) and (max-width: 424px) {
+  #section--two {
+    position: relative;
+    display: block;
+    min-width: fit-content;
+    border-bottom: 0.1px solid royalblue;
+    color: rgb(7, 227, 7);
+    padding: 1rem;
+  }
+  .section--two--container {
+    display: flex;
+  }
+  .doctors--schedule {
+    background-color: black;
+    padding: 0.2rem;
+    max-width: 300px;
+    min-height: 150px;
+    color: white;
+    justify-items: center;
+    border-radius: 20px;
+    border: 2px solid aqua;
+    margin: 2px;
+  }
+  .appointment--booking--container {
+    background-color: black;
+    padding: 0.2rem;
+
+    min-height: 150px;
+    color: white;
+    justify-items: center;
+    border-radius: 20px;
+    border: 2px solid aqua;
+    margin: 2px;
+    width: 100%;
+  }
+  .notificatios--remind {
+    background-color: black;
+    padding: 0.2rem;
+    max-width: 300px;
+    min-height: 150px;
+    color: white;
+    justify-items: center;
+    border-radius: 20px;
+    border: 2px solid aqua;
+    margin: 2px;
+  }
+  .payments--orders {
+    background-color: black;
+    padding: 0.2rem;
+    max-width: 300px;
+    min-height: 150px;
+    color: white;
+    justify-items: center;
+    border-radius: 20px;
+    border: 2px solid aqua;
+    margin: 2px;
+  }
+}

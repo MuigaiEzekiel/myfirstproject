@@ -1,0 +1,17 @@
+@media only screen and (min-width: 375px) and (max-width: 424px) {
+  .service--img {
+    box-shadow: black;
+  }
+  .service--img img {
+    max-width: 70%;
+    height: 150px;
+    margin: 5px;
+  }
+  .services--img {
+    display: flex;
+
+    position: relative;
+
+    justify-content: center;
+  }
+}

@@ -1,0 +1,24 @@
+@media only screen and (min-width: 375px) and (max-width: 424px) {
+  #section--three {
+    width: 100%;
+    right: 0%;
+    justify-items: center;
+    padding: 100px;
+    display: block;
+    position: relative;
+    color: rgb(7, 227, 7);
+    background-color: azure;
+
+    border-bottom: 0.1px solid rgb(0, 0, 0, 0.7);
+  }
+  .map--container {
+    background-color: black;
+    padding: 0.2rem;
+    max-width: 500px;
+    min-height: 150px;
+    color: rgb(7, 227, 7);
+    justify-items: center;
+    border-radius: 20px;
+    border: 2px solid aqua;
+  }
+}

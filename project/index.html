@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>healthbreeze.ac.ke</title>
+    <link rel="stylesheet" href="review.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="sectiontwo.css" />
+    <link rel="stylesheet" href="services.css" />
+    <link rel="stylesheet" href="sectionone.css" />
+    <link rel="stylesheet" href="sectionthree.css" />
+    <link rel="stylesheet" href="search.css" />
+    <link rel="stylesheet" href="sectionfive.css" />
+    <link rel="stylesheet" href="nav.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="user--validation--container">
+      <div class="user--validation">
+        <button class="user--login">Patient Login</button>
+        <button class="skip--login">Admin Login</button>
+        <p class="registration--btn">
+          Don't have an account register <a href="#">here</a>
+        </p>
+      </div>
+    </div>
+    <div class="form--one hidden">
+      <form action="" method="">
+        <div class="input--one--container">
+          <div class="input--one">
+            <div class="login--container">
+              <label for="full-Name"
+                >Enter your name <span class="required">*</span></label
+              >
+              <input type="text" id="fullN" name="fullName" />
+            </div>
+            <div class="login--error-message hidden" id="fullnameemailError">
+              Please enter your name.
+            </div>
+          </div>
+          <!-- <div class="input--one">
+          <div>
+            <label for="last-Name">Enter lastname </label>
+
+            <input type="text" id="lastN" name="last-Name" />
+          </div>
+          <div class="login--error-message hidden" id="lastnameemailError">
+            Please enter a valid email address.
+          </div>
+        </div> -->
+          <div class="input--one">
+            <div class="login--container">
+              <label for="Email"
+                >Enter Email <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                placeholder=""
+                id="logiNEmail"
+                name="loginemaim"
+              />
+            </div>
+            <div class="login--error-message hidden" id="loginemailError">
+              Please enter a valid email.
+            </div>
+          </div>
+          <div class="input--one">
+            <div class="login--container">
+              <label for="password"
+                >Enter password <span class="required">*</span></label
+              >
+              <input type="number" id="passWordR" name="password" />
+            </div>
+            <div class="login--error-message hidden" id="loginPasswordError">
+              insert correct password.
+            </div>
+          </div>
+          <div class="input--one">
+            <button class="user--login--submit">submit</button>
+            <button class="login--form--cancel">cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="side--bar">
+      <button class="close--side--bar">&times;</button>
+
+      <ol>
+        <a href="#">Home</a>
+        <a href="#section--one">Services</a>
+        <a href="#">Payments</a>
+        <a href="#section--two">Appointments</a>
+        <a href="# section--three">Notifications & Reminders</a>
+        <a href="#">Feedback</a>
+        <a href="#section--four">Reviews</a>
+      </ol>
+    </div>
+    <div class="side--bar--overlay"></div>
+    <div class="nav">
+      <div class="open--side--bar"><i class="fa fa-bars"></i></div>
+      <div class="search--icon">
+        <button class="fa--search"><i class="fa fa-search"></i></button>
+      </div>
+      <div class="user--profile">&times;</div>
+    </div>
+    <div class="search--container">
+      <div>
+        <div class="remove--search--bar">&times;</div>
+        <input type="text" placeholder="search..." />
+        <p>hello</p>
+      </div>
+    </div>
+    <div class="search--overlay"></div>
+    <div class="register--h2">
+      <h2>
+        <span class="fill">Register</span>
+        <span class="reg">To Recieve</span>
+        <span class="receive"> our services</span>
+      </h2>
+    </div>
+    <div class="user--profile--container">
+      <div class="user--profile--img"><img src="user1.jpg" alt="no img" /></div>
+      <div class="user_name">Name:</div>
+      <div class="user_email">Email:</div>
+      <div class="user_phone">Phone:</div>
+      <button class="update--user">Edit</button>
+    </div>
+    <div class="user--profile--update">
+      <div class="user--profile--img"><img src="user1.jpg" alt="no img" /></div>
+      <div class="user_name">
+        <label for="name"> Name:</label>
+        <input type="text" />
+      </div>
+      <div class="user_email">
+        <label for="email"> Email:</label> <input type="text" />
+      </div>
+      <div class="user_phone">
+        <label for="phone"> Phone:</label> <input type="text" />
+      </div>
+      <button class="submit--user">submit</button>
+    </div>
+    <div class="profile--overlay"></div>
+    <div class="registration--form--hidden hidden">
+      <button class="registration--form--hide">&times;</button>
+      <form id="registration--form--container " action="" method="">
+        <div class="registration--form">
+          <label for="firstname"
+            >First name<span class="required">*</span></label
+          >
+          <input type="text" id="regfname" placeholder="" name="fullname" />
+          <div class="error-message hidden" id="fnameError">
+            Please enter your name.
+          </div>
+        </div>
+        <div class="registration--form">
+          <label for="firstname"
+            >last name<span class="required">*</span></label
+          >
+          <input type="text" id="reglname" placeholder="" name="fullname" />
+          <div class="error-message hidden" id="lnameError">
+            Please enter your name.
+          </div>
+        </div>
+        <div class="registration--form">
+          <label for="">Email<span class="required">*</span></label>
+          <input type="email" id="email1" name="email1" />
+          <div class="error-message hidden" id="emailError">
+            Please enter a valid email address.
+          </div>
+        </div>
+        <div class="registration--form">
+          <label for="">Password<span class="required">*</span></label>
+          <input type="password" id="password1" />
+          <div class="error-message hidden" id="passwordError">
+            Incorrect password.
+          </div>
+        </div>
+        <div class="registration--form">
+          <label for="age">Age</label>
+          <input type="number" id="age1" />
+          <div class="error-message hidden" id="ageError">
+            Please enter valid age number.
+          </div>
+        </div>
+        <div class="registration--form">
+          <p>please select your gender<span class="required">*</span></p>
+          <div class="registration--gender">
+            <label for="male">Male</label>
+            <input type="radio" id="sexM" name="gender" value="male" />
+          </div>
+          <div>
+            <label for="gender">Female</label>
+            <input type="radio" id="sexF" name="gender" value="female" />
+          </div>
+          <div class="error-message hidden" id="sexError">
+            Please select your gender.
+          </div>
+        </div>
+        <div class="registration--form">
+          <label for="country">Country</label>
+          <select id="native--country" name="options">
+            <option value="Botswana">Botswana</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Swaziland">Swaziland</option>
+            <option value="Lesotho">Lesotho</option>
+          </select>
+        </div>
+        <div class="registration--form--terms">
+          <div class="terms--container">
+            <input type="checkbox" id="terms1" value="agree" />
+            <p class="termsp">
+              I have read and agreed to the Health-Breeze
+              <a href="#">User agreement</a> and <a href="#">Privacy policy</a>
+            </p>
+          </div>
+          <div class="error-message--terms hidden" id="agreeError">
+            You must agree to the Terms and Conditions to proceed.
+          </div>
+        </div>
+        <div class="registration--form--btn">
+          <button class="registration--submit--btn">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="decription">
+      <div class="welcome">
+        <h1>Health-Breeze</h1>
+        <p>
+          <span>Welcome🎉</span
+          ><span>We offer a variety of affordable services</span>
+        </p>
+      </div>
+    </div>
+
+    <section id="section--two">
+      <h3>Appointments</h3>
+      <div class="section--two--container">
+        <div class="doctors--schedule">
+          <h2>Doctors Schedule Appears Here</h2>
+        </div>
+
+        <div class="notificatios--remind">
+          <h2>Notifications & Reminders</h2>
+        </div>
+
+        <div class="appointment--booking--container">
+          <p>
+            want to start medication proceed to book an appointment and get in
+            touch with our qualified specialists
+          </p>
+          <div>
+            <button class="appointment--booking">Appointment</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="section--three">
+      <h2>Location</h2>
+      <div class="map--container">
+        <p>search location to the nearest branch here</p>
+        <p>map</p>
+      </div>
+    </section>
+    <section id="section--five">
+      <h3>Shop</h3>
+      <div class="shop--container">
+        <div class="hospital--shop"><h4>shop</h4></div>
+        <div class="payments--orders"><h4>Payments $ Orders</h4></div>
+      </div>
+    </section>
+    <section id="section--one">
+      <div class="services--container">
+        <div class="services--h">
+          <h3>Our Services</h3>
+        </div>
+        <div class="services--img">
+          <div class="service--img">
+            <div>
+              <h2>X-Ray Services</h2>
+            </div>
+            <div><img src="x-ray.jpg" /></div>
+            <div>
+              <p>
+                An X-ray lab plays a crucial role in medical diagnostics, using
+                advanced imaging technology to visualize bones, organs, and
+                tissues. It helps detect fractures, infections, and
+                abnormalities like tumors. Quick, non-invasive, and highly
+                accurate.
+              </p>
+            </div>
+          </div>
+          <div class="service--img">
+            <div>
+              <h2>Eye Services</h2>
+            </div>
+            <div>
+              <img src="eye-lab.jpg" />
+            </div>
+            <div>
+              <p>
+                An eye lab specializes in diagnosing and treating vision issues
+                through advanced tests and imaging, ensuring accurate
+                assessments for conditions like glaucoma, cataracts, and
+                refractive errors.
+              </p>
+            </div>
+          </div>
+          <div class="service--img">
+            <div>
+              <h2>Clinical diagnostic Services</h2>
+            </div>
+            <div><img src="diagnosis-lab.jpg" /></div>
+            <div>
+              <p>
+                A clinical lab conducts vital medical tests on blood, urine, and
+                other samples, providing critical data for diagnosing diseases,
+                monitoring health, and guiding effective treatments.
+              </p>
+            </div>
+          </div>
+          <button class="slider__btn slider__btn--left">&larr;</button>
+          <button class="slider__btn slider__btn--right">&rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="appointmentoverlay hidden">
+      <button class="closeappointmentoverlay">&times;</button>
+      <div class="appointment--container hidden">
+        <div class="appointment--management">
+          <div><lable for="diagnosis">diagnosis:</lable> <input id="di" /></div>
+          <div>
+            <lable for="branch">Branch:</lable> <input id="hospitalbranch" />
+          </div>
+          <div>
+            <lable for="appointmentdate">Date:</lable>
+            <input type="datetime-local" id="appodate" />
+          </div>
+
+          <div><button class="cancel--schedule">Book</button></div>
+        </div>
+        <!-- doctor cancel reschedule-->
+      </div>
+    </div>
+
+    <section id="section--four">
+      <div class="reviews--container">
+        <div class="section--four--h2"><h2>Reviews</h2></div>
+        <div class="reviews--img--container">
+          <div class="reviews-img"><img src="review3.jpg" /></div>
+          <div class="reviews-img"><img src="review2.jpg" /></div>
+          <div class="reviews-img"><img src="review1.jpg" /></div>
+        </div>
+        <button class="review--slider__btn review--slider__btn--left">
+          &larr;
+        </button>
+        <button class="review--slider__btn review--slider__btn--right">
+          &rarr;
+        </button>
+      </div>
+    </section>
+    <!--registration form  -->
+
+    <section id="section--last">
+      <footer class="footer">
+        <div class="contact--us">
+          <h2>Contact us:</h2>
+          <p>Phone: +254-720002024</p>
+          <p>E-mail: breeze@gmail.com</p>
+        </div>
+        <div class="social--links">
+          <h4>social media</h4>
+          <a href=""><i class="fa fa-instagram"></i> instagram</a>
+          <a href=""><i class="fa fa-twitter"></i>Twitter</a>
+          <a href=""><i class="fa fa-facebook"></i>Facebook</a>
+        </div>
+        <div class="copyright">
+          <h5>copyright</h5>
+          <p>&copy; 2024 Health Breeze, All rights reserved</p>
+        </div>
+      </footer>
+    </section>
+
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+@media only screen and (min-width: 375px) and (max-width: 424px) {
+  .nav {
+    display: flex;
+    position: fixed;
+    padding: 30px;
+    z-index: 10;
+    width: 100%;
+    top: 0%;
+    height: 25px;
+    background-color: black;
+  }
+  .search--icon {
+    position: absolute;
+    left: 40%;
+    top: 0px;
+  }
+  .fa--search {
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: x-large;
+    top: 0%;
+  }
+  .user--profile {
+    position: absolute;
+    color: white;
+    left: 60%;
+  }
+  .user--profile--container {
+    top: -100%;
+    transition: top 1s ease;
+    position: absolute;
+    left: 40%;
+    z-index: 8;
+    width: 150px;
+    background-color: aqua;
+    padding: 0 3rem 0 0;
+    border-radius: 3px;
+    justify-items: center;
+    color: black;
+  }
+  .user--profile--img {
+    height: 50px;
+
+    width: 50px;
+    border-radius: 50%;
+  }
+  .user--profile--img img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+  .profile--overlay {
+    top: -150%;
+    left: 0;
+    right: 0;
+    padding: 300px;
+    position: absolute;
+    background-color: royalblue;
+    opacity: 0.6;
+    z-index: 2;
+    transition: top 1s ease;
+  }
+}
