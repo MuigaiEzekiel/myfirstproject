@@ -8,6 +8,11 @@ body {
   padding: 0.4rem;
   margin: 2px;
 }
+thead,
+th,
+td {
+  border: 1px solid black;
+}
 .side--bar {
   background-color: black;
   width: 200px;
@@ -128,7 +133,7 @@ body {
   height: fit-content;
   position: fixed;
   top: 0%;
-  z-index: 7;
+  z-index: 12;
 }
 .registration--form--hide {
   position: relative;
@@ -465,6 +470,17 @@ body {
     flex: 1 1 45%;
     padding: 10px;
     z-index: 12;
+  }
+  .login--success-message {
+    padding: 1rem;
+    background-color: rgb(7, 227, 7);
+    position: absolute;
+    z-index: 8;
+    top: 40%;
+    left: 50%;
+    color: white;
+    display: none;
+    border-radius: 20px;
   }
   .side--bar {
     background-color: black;

@@ -8,7 +8,8 @@ const router = express.Router();
 dotenv.config();
 const database = require("./configuration/config");
 const createAccount = require("./usermanagement/register");
-const loginUser = require("./usermanagement/login");
+const loginRealUser = require("./usermanagement/login");
+const updatePatient = require("./usermanagement/update");
 const viewProfile = require("./usermanagement/viewprofile");
 const session = require("express-session");
 const MySQLStore = require("express-mysql-session")(session);
@@ -20,6 +21,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     store: sessionStore,
     resave: false,
+    email: "",
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60,
@@ -27,6 +29,8 @@ app.use(
     },
   })
 );
+//
+
 const cors = require("cors");
 app.use(cors());
 app.use(express.static(path.join(__dirname, "project")));
@@ -70,6 +74,7 @@ const {
   showBookedAppointment,
   cancelAppointment,
 } = require("./appointments/appointments");
+
 //cerating respective tables
 app.get("/createTablePatient", (req, res) => {
   const createPatient = ` CREATE TABLE IF NOT EXISTS patients (patient_id INT AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(50) NOT NULL, last_name VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL, password_hash VARCHAR(255),phone VARCHAR(50),  date_of_birth DATE, gender VARCHAR(20), address VARCHAR(50)) `;
@@ -131,8 +136,60 @@ const PORT = 3000;
 //1 add patient
 app.post("/createaccount", createAccount);
 //app.get("/registeraccount", createAccount);
-app.post("/loginExistingUser", loginUser);
-app.get("/viewProfileExistingUser", viewProfile);
+
+const bcrypt = require("bcryptjs");
+
+dotenv.config();
+//
+const users = {};
+app.post("/loginExistingUser", function (req, res) {
+  const { email, password } = req.body;
+  // Prepare query to check if user exists
+  const query = `SELECT * FROM patients WHERE email = (?)`;
+
+  const params = [email];
+  try {
+    // Perform the query
+    database.query(query, params, (err, data) => {
+      if (err) {
+        // Handle database errors
+        console.log("Database error:", err);
+        return res
+          .status(500)
+          .send("An error occurred while querying the database");
+      }
+      const user = data[0];
+      if (data === 0) {
+        return res.status(400).send("user not found");
+      }
+
+      // User found, now compare the password
+      // Assuming the result is an array and the user is the first result
+
+      //Optional: Compare hashed password (using bcrypt or another library)
+      bcrypt.compare(password, user.password_hash, (compareErr, isMatch) => {
+        if (compareErr) {
+          console.log("Error comparing password:", compareErr);
+          return res.status(500).send("Password comparison error");
+        }
+
+        if (!isMatch) {
+          return res.status(400).send("Invalid email/password combination");
+        }
+
+        console.log("User logged in successfully");
+        res.status(200).send("Login successful");
+        const user = users[req.session.user];
+        console.log(user);
+      });
+    });
+  } catch (error) {
+    console.log("An error occurred:", error);
+    res.status(500).send("Internal server error");
+  }
+});
+app.post("/updatepatientdetails", updatePatient);
+app.post("/viewProfileExistingUser", viewProfile);
 ///doctor management
 //1 new doctor
 app.get("*", (req, res) => {

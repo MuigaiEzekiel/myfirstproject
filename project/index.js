@@ -1,3 +1,4 @@
+const currentUseremail = [];
 //const displayAppointmentDetails = require("./sectionone");
 //Form one
 const openSideBar = document.querySelector(".open--side--bar");
@@ -20,6 +21,7 @@ const registrationBtn = document.querySelector(".registration--btn");
 const validationContainer = document.querySelector(
   ".user--validation--container"
 );
+const loginSuccesMessage = document.querySelector(".login--success-message");
 const userLoginSubmit = document.querySelector(".user--login--submit");
 let loginemailError = document.getElementById("loginemailError");
 const loginNEmail = document.getElementById("logiNEmail");
@@ -156,40 +158,11 @@ const usertPasswordValidation = function () {
 //     ? console.log("validation passed")
 //     : console.log("validation required");
 // }
+
 const loginsValidation = async (event) => {
   event.preventDefault();
 
   //username validation
-
-  console.log(loginNEmail.value);
-  const email = loginNEmail.value;
-  const password = passWordR.value;
-  // const email =
-  const name = fullN.value;
-  //   const phone
-  //   const date_of_birth=
-  //  const  gender =
-  //  const  address =
-  // console.log(password);
-  // console.log(email);
-
-  const response = await fetch("http://localhost:3000/loginExistingUser", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({
-      email,
-      password,
-      name,
-    }),
-  });
-  const result = response.json;
-  if (response.status === 200) {
-    console.log("success");
-  } else {
-    console.log("failed");
-  }
   nameValidation(fullN.value);
 
   //email validation
@@ -197,6 +170,76 @@ const loginsValidation = async (event) => {
   //pasword validation
 
   usertPasswordValidation();
+  const email = loginNEmail.value;
+  const password = passWordR.value;
+  const name = fullN.value;
+  currentUseremail.push(email);
+  console.log(currentUseremail[0]);
+  const loginRes = await fetch("http://localhost:3000/loginExistingUser", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  const result = loginRes.json;
+  if (loginRes.status === 200) {
+    formOne.style.display = "none";
+
+    setTimeout(() => {
+      loginSuccesMessage.style.display = "block";
+    }, 1000 * 1);
+    setTimeout(() => {
+      loginSuccesMessage.style.display = "none";
+    }, 1000 * 3);
+
+    const viewcurrprof = await fetch(
+      "http://localhost:3000/viewProfileExistingUser",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        loadHhtmlTable(data[0]);
+        console.log(data[0]);
+
+        return data;
+      });
+    const dataone = viewcurrprof[0];
+    function loadHhtmlTable(data) {
+      const table = document.querySelector("tbody");
+      console.log(table);
+
+      if (data) {
+        table.innerHTML = "";
+        table.innerHTML = `<tr><td class = ' no-data' colspan = '5'>No Data<td><tr> `;
+        return;
+      }
+      table.innerHTML = "";
+      // const userdata = [];
+      // for (const [key, value] of Object.entries(dataone)) {
+      //   userdata.push(value);
+      //   console.log(userdata);
+      // }
+      // table.innerHTML = `<tr><td>${data.first_name}<td><td>${data.email}<td><td>${data.phone}<td> <td>${data.gender}<td><td>${data.address}<td>`;
+    }
+    //console.log(viewcurrprof[0]);
+
+    // console.log(dataone);
+  } else {
+    console.log("failed");
+  }
 };
 
 userLoginSubmit.addEventListener(
@@ -239,7 +282,7 @@ const newuser = async function (e) {
       return sexM.value;
     }
   };
-
+  const userPassword = [];
   const password = passwordOne.value;
   const email = emailOne.value;
   const fname = regfname.value;
@@ -247,11 +290,11 @@ const newuser = async function (e) {
   const date_of_birth = "2000-12-01";
   const address = "55";
   const phone = "3245636737";
-
+  userPassword.push(password);
   const gender = detgender();
   //username v(alidation
 
-  const response = await fetch("http://localhost:3000/createaccount", {
+  const loginResponse = await fetch("http://localhost:3000/createaccount", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -267,8 +310,8 @@ const newuser = async function (e) {
       gender,
     }),
   });
-  const result = response.json;
-  if (response.status === 200) {
+  const result = loginResponse.json;
+  if (loginResponse.status === 200) {
     console.log("success");
   } else {
     console.log("failed");
@@ -422,8 +465,31 @@ profileOverlay.addEventListener("click", function () {
 //updating user
 const updateUser = document.querySelector(".update--user");
 const userProfileUpdate = document.querySelector(".user--profile--update");
+
+const profileName = document.querySelector(".profile--name");
+const profileEmail = document.querySelector(".profile--email");
+const profilePhone = document.querySelector(".profile--phone");
+
 updateUser.addEventListener("click", function () {
   userProfileContainer.style.display = "none";
   userProfileUpdate.style.display = "block";
   userProfileUpdate.style.top = "150px";
+  const updatingUserDetails = async function () {
+    const updatedName = profileName.value;
+    const UpdatedEmail = profileEmail.value;
+    const updatedPhone = profilePhone.value;
+    const updating = await fetch("http://localhost:3000/updateUserDetails", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        updatedName,
+        UpdatedEmail,
+        updatedPhone,
+        password,
+      }),
+    });
+  };
 });
+//loading patient details

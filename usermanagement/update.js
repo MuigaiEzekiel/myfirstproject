@@ -1,11 +1,15 @@
-const updatePatientsAcc = (req, res) => {
-  const updatePatientphone = await` UPDATE patients SET phone = '929292'WHERE email = 'jim@gmail.com `;
-  const updatePatientAddress = await` UPDATE patients SET address = '04' WHERE email = 'jim@gmail.com' `;
-  const updatePatientGender = await` UPDATE patients SET gender = 'Female' WHERE email = 'jim@gmail.com `;
-  // (first_name, last_name, email , password_hash,phone,  date_of_birth, gender, address )
-  // VALUES ( 'Jim','White', 'jim@gmail.com', '123','098765', '2000','Male','123 Main St') `;
+const bcrypt = require("bcryptjs");
+
+const updatePatientsAcc = async (req, res) => {
+  const { updatedName, UpdatedEmail, updatedPhone, password } = await req.body;
+  const hashed_password = await bcrypt.hash(password, 4);
+  const updatePatientphone = ` UPDATE patients SET phone = '?'WHERE password = ${hashed_password} `;
+  const updatePatientEmail = ` UPDATE patients SET address = '' WHERE password = ${hashed_password} `;
+  const updatePatientName = ` UPDATE patients SET gender = 'Female' WHERE password = ${hashed_password} `;
+
   try {
-    database.query(updatePatientAddress, (err, data) => {
+    const params = [UpdatedEmail];
+    database.query(updatePatientEmail, params, (err, data) => {
       if (err) {
         console.log("Insertion failed:", err);
         return res.status(500).send("Database error");
@@ -17,6 +21,7 @@ const updatePatientsAcc = (req, res) => {
     console.log(error);
   }
   try {
+    const params = updatedPhone;
     database.query(updatePatientphone, (err, data) => {
       if (err) {
         console.log("Insertion failed:", err);
@@ -29,7 +34,8 @@ const updatePatientsAcc = (req, res) => {
     console.log(error);
   }
   try {
-    database.query(updatePatientGender, (err, data) => {
+    const params = [updatedName];
+    database.query(updatePatientName, (err, data) => {
       if (err) {
         console.log("Insertion failed:", err);
         return res.status(500).send("Database error");
@@ -41,4 +47,4 @@ const updatePatientsAcc = (req, res) => {
     console.log(error);
   }
 };
-exports.updatePatientsAcc;
+module.exports = updatePatientsAcc;

@@ -87,7 +87,9 @@
         </div>
       </form>
     </div>
-
+    <div class="login--success-message">
+      <p>login successful</p>
+    </div>
     <div class="side--bar">
       <button class="close--side--bar">&times;</button>
 
@@ -126,10 +128,10 @@
     </div>
     <div class="user--profile--container">
       <div class="user--profile--img"><img src="user1.jpg" alt="no img" /></div>
-      <div class="user_name">Name:</div>
-      <div class="user_email">Email:</div>
-      <div class="user_phone">Phone:</div>
-      <button class="update--user">Edit</button>
+      <div class="user_name" id="profile--name">Name:</div>
+      <div class="user_email" id="profile--email">Email:</div>
+      <div class="user_phone" id="profile--phone">Phone:</div>
+      <button class="update--user">Update</button>
     </div>
     <div class="user--profile--update">
       <div class="user--profile--img"><img src="user1.jpg" alt="no img" /></div>
@@ -143,7 +145,7 @@
       <div class="user_phone">
         <label for="phone"> Phone:</label> <input type="text" />
       </div>
-      <button class="submit--user">submit</button>
+      <button class="submit--user">Save</button>
     </div>
     <div class="profile--overlay"></div>
     <div class="registration--form--hidden hidden">
@@ -366,7 +368,18 @@
       </div>
     </section>
     <!--registration form  -->
-
+    <section id="section--six">
+      <table>
+        <thead>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Gender</th>
+          <th>Address</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
     <section id="section--last">
       <footer class="footer">
         <div class="contact--us">

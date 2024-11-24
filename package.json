@@ -8,7 +8,6 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {

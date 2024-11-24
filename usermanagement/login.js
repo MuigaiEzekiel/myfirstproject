@@ -1,15 +1,14 @@
 const dotenv = require("dotenv");
 const bcrypt = require("bcryptjs");
+
 dotenv.config();
 const database = require("../configuration/config");
 const loginUser = function (req, res) {
-  const { name, email, password } = req.body;
-  console.log(name, email, password);
-
+  const { email, password } = req.body;
   // Prepare query to check if user exists
-  const query = "SELECT * FROM patients WHERE email = ?";
-  const params = [email];
+  const query = `SELECT * FROM patients WHERE email = (?)`;
 
+  const params = [email];
   try {
     // Perform the query
     database.query(query, params, (err, data) => {
@@ -21,15 +20,14 @@ const loginUser = function (req, res) {
           .send("An error occurred while querying the database");
       }
 
-      if (data.length === 0) {
-        // User not found
-        return res.status(400).send("User not found");
+      if (data === 0) {
+        return res.status(400).send("user not found");
       }
-
+      const users = {};
       // User found, now compare the password
-      const user = data[0]; // Assuming the result is an array and the user is the first result
+      const user = users[email]; // Assuming the result is an array and the user is the first result
 
-      // Optional: Compare hashed password (using bcrypt or another library)
+      //Optional: Compare hashed password (using bcrypt or another library)
       bcrypt.compare(password, user.password_hash, (compareErr, isMatch) => {
         if (compareErr) {
           console.log("Error comparing password:", compareErr);
@@ -42,6 +40,8 @@ const loginUser = function (req, res) {
 
         console.log("User logged in successfully");
         res.status(200).send("Login successful");
+        const user = users[req.session.user];
+        console.log(user);
       });
     });
   } catch (error) {
@@ -50,4 +50,4 @@ const loginUser = function (req, res) {
   }
 };
 
-module.exports = loginUser;
+//module.exports = loginUser;
